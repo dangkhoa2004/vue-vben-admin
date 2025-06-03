@@ -17,7 +17,7 @@ setupVbenVxeTable({
         },
         minHeight: 180,
         formConfig: {
-          // 全局禁用vxe-table的表单配置，使用formOptions
+          // Globally disable vxe-table’s form configuration; use formOptions instead
           enabled: false,
         },
         proxyConfig: {
@@ -36,7 +36,7 @@ setupVbenVxeTable({
       },
     });
 
-    // 表格配置项可以用 cellRender: { name: 'CellImage' },
+    // Table configuration can use cellRender: { name: 'CellImage' }
     vxeUI.renderer.add('CellImage', {
       renderTableDefault(_renderOpts, params) {
         const { column, row } = params;
@@ -44,7 +44,7 @@ setupVbenVxeTable({
       },
     });
 
-    // 表格配置项可以用 cellRender: { name: 'CellLink' },
+    // Table configuration can use cellRender: { name: 'CellLink' }
     vxeUI.renderer.add('CellLink', {
       renderTableDefault(renderOpts) {
         const { props } = renderOpts;
@@ -56,7 +56,7 @@ setupVbenVxeTable({
       },
     });
 
-    // 这里可以自行扩展 vxe-table 的全局配置，比如自定义格式化
+    // Here you can extend vxe-table’s global configuration, such as custom formatters
     // vxeUI.formats.add
   },
   useVbenForm,

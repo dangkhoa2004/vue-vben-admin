@@ -24,31 +24,31 @@ import LoginForm from '#/views/_core/authentication/login.vue';
 const notifications = ref<NotificationItem[]>([
   {
     avatar: 'https://avatar.vercel.sh/vercel.svg?text=VB',
-    date: '3小时前',
+    date: '3 hours ago',
     isRead: true,
-    message: '描述信息描述信息描述信息',
-    title: '收到了 14 份新周报',
+    message: 'Description text description text description text',
+    title: 'Received 14 new weekly reports',
   },
   {
     avatar: 'https://avatar.vercel.sh/1',
-    date: '刚刚',
+    date: 'Just now',
     isRead: false,
-    message: '描述信息描述信息描述信息',
-    title: '朱偏右 回复了你',
+    message: 'Description text description text description text',
+    title: 'Zhu Pianyou replied to you',
   },
   {
     avatar: 'https://avatar.vercel.sh/1',
     date: '2024-01-01',
     isRead: false,
-    message: '描述信息描述信息描述信息',
-    title: '曲丽丽 评论了你',
+    message: 'Description text description text description text',
+    title: 'Qu Lili commented on you',
   },
   {
     avatar: 'https://avatar.vercel.sh/satori',
-    date: '1天前',
+    date: '1 day ago',
     isRead: false,
-    message: '描述信息描述信息描述信息',
-    title: '代办提醒',
+    message: 'Description text description text description text',
+    title: 'To-do reminder',
   },
 ]);
 
@@ -126,28 +126,15 @@ watch(
 <template>
   <BasicLayout @clear-preferences-and-logout="handleLogout">
     <template #user-dropdown>
-      <UserDropdown
-        :avatar
-        :menus
-        :text="userStore.userInfo?.realName"
-        description="ann.vben@gmail.com"
-        tag-text="Pro"
-        @logout="handleLogout"
-      />
+      <UserDropdown :avatar :menus :text="userStore.userInfo?.realName" description="ann.vben@gmail.com" tag-text="Pro"
+        @logout="handleLogout" />
     </template>
     <template #notification>
-      <Notification
-        :dot="showDot"
-        :notifications="notifications"
-        @clear="handleNoticeClear"
-        @make-all="handleMakeAll"
-      />
+      <Notification :dot="showDot" :notifications="notifications" @clear="handleNoticeClear"
+        @make-all="handleMakeAll" />
     </template>
     <template #extra>
-      <AuthenticationLoginExpiredModal
-        v-model:open="accessStore.loginExpired"
-        :avatar
-      >
+      <AuthenticationLoginExpiredModal v-model:open="accessStore.loginExpired" :avatar>
         <LoginForm />
       </AuthenticationLoginExpiredModal>
     </template>

@@ -26,42 +26,42 @@ function loading() {
 
 function notify(type: NotificationType) {
   notification[type]({
-    content: '说点啥呢',
+    content: 'Say something',
     duration: 2500,
     keepAliveOnHover: true,
-    meta: '想不出来',
+    meta: 'Can’t think of anything',
   });
 }
 </script>
 
 <template>
-  <Page description="支持多语言，主题功能集成切换等" title="naive组件使用演示">
-    <NCard class="mb-5" title="按钮">
+  <Page description="Supports multi-language, theme integration and switching" title="Naive UI Components Demo">
+    <NCard class="mb-5" title="Buttons">
       <NSpace>
         <NButton>Default</NButton>
-        <NButton type="tertiary"> Tertiary </NButton>
-        <NButton type="primary"> Primary </NButton>
-        <NButton type="info"> Info </NButton>
-        <NButton type="success"> Success </NButton>
-        <NButton type="warning"> Warning </NButton>
-        <NButton type="error"> Error </NButton>
+        <NButton type="tertiary">Tertiary</NButton>
+        <NButton type="primary">Primary</NButton>
+        <NButton type="info">Info</NButton>
+        <NButton type="success">Success</NButton>
+        <NButton type="warning">Warning</NButton>
+        <NButton type="error">Error</NButton>
       </NSpace>
     </NCard>
 
     <NCard class="mb-5" title="Message">
       <NSpace>
-        <NButton type="error" @click="error"> 错误 </NButton>
-        <NButton type="warning" @click="warning"> 警告 </NButton>
-        <NButton type="success" @click="success"> 成功 </NButton>
-        <NButton type="primary" @click="loading"> 加载中 </NButton>
+        <NButton type="error" @click="error">Error</NButton>
+        <NButton type="warning" @click="warning">Warning</NButton>
+        <NButton type="success" @click="success">Success</NButton>
+        <NButton type="primary" @click="loading">Loading</NButton>
       </NSpace>
     </NCard>
     <NCard class="mb-5" title="Notification">
       <NSpace>
-        <NButton type="error" @click="notify('error')"> 错误 </NButton>
-        <NButton type="warning" @click="notify('warning')"> 警告 </NButton>
-        <NButton type="success" @click="notify('success')"> 成功 </NButton>
-        <NButton type="primary" @click="notify('info')"> 加载中 </NButton>
+        <NButton type="error" @click="notify('error')">Error</NButton>
+        <NButton type="warning" @click="notify('warning')">Warning</NButton>
+        <NButton type="success" @click="notify('success')">Success</NButton>
+        <NButton type="primary" @click="notify('info')">Loading</NButton>
       </NSpace>
     </NCard>
   </Page>

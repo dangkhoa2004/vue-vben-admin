@@ -3,9 +3,7 @@ import type { VbenFormProps } from '#/adapter/form';
 import type { VxeGridProps } from '#/adapter/vxe-table';
 
 import { message } from 'ant-design-vue';
-
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-
 import { getExampleTableApi } from '../mock-api';
 
 interface RowType {
@@ -18,7 +16,7 @@ interface RowType {
 }
 
 const formOptions: VbenFormProps = {
-  // 默认展开
+  // Expanded by default
   collapsed: false,
   schema: [
     {
@@ -33,10 +31,10 @@ const formOptions: VbenFormProps = {
     {
       component: 'Input',
       componentProps: {
-        placeholder: 'Please enter productName',
+        placeholder: 'Please enter product name',
       },
       fieldName: 'productName',
-      label: 'ProductName',
+      label: 'Product Name',
     },
     {
       component: 'Input',
@@ -60,7 +58,7 @@ const formOptions: VbenFormProps = {
             value: '2',
           },
         ],
-        placeholder: '请选择',
+        placeholder: 'Please select',
       },
       fieldName: 'color',
       label: 'Color',
@@ -71,14 +69,14 @@ const formOptions: VbenFormProps = {
       label: 'Date',
     },
   ],
-  // 控制表单是否显示折叠按钮
+  // Whether to show the collapse button
   showCollapseButton: true,
   submitButtonOptions: {
-    content: '查询',
+    content: 'Search',
   },
-  // 是否在字段值改变时提交表单
+  // Whether to submit the form on field value change
   submitOnChange: false,
-  // 按下回车时是否提交表单
+  // Whether to submit the form when pressing Enter
   submitOnEnter: false,
 };
 
@@ -88,7 +86,7 @@ const gridOptions: VxeGridProps<RowType> = {
     labelField: 'name',
   },
   columns: [
-    { title: '序号', type: 'seq', width: 50 },
+    { title: 'No.', type: 'seq', width: 50 },
     { align: 'left', title: 'Name', type: 'checkbox', width: 100 },
     { field: 'category', title: 'Category' },
     { field: 'color', title: 'Color' },
@@ -111,8 +109,8 @@ const gridOptions: VxeGridProps<RowType> = {
     },
   },
   toolbarConfig: {
-    // 是否显示搜索表单控制按钮
-    // @ts-ignore 正式环境时有完整的类型声明
+    // Whether to show search form toggle button
+    // @ts-ignore In production environment, there is a full type declaration
     search: true,
   },
 };

@@ -8,7 +8,7 @@ function useNavigation() {
   const router = useRouter();
   const routeMetaMap = new Map<string, RouteRecordNormalized>();
 
-  // 初始化路由映射
+  // Initialize route map
   const initRouteMetaMap = () => {
     const routes = router.getRoutes();
     routes.forEach((route) => {
@@ -18,12 +18,12 @@ function useNavigation() {
 
   initRouteMetaMap();
 
-  // 监听路由变化
+  // Listening for route changes
   router.afterEach(() => {
     initRouteMetaMap();
   });
 
-  // 检查是否应该在新窗口打开
+  // Check if it should open in a new window
   const shouldOpenInNewWindow = (path: string): boolean => {
     if (isHttpUrl(path)) {
       return true;

@@ -9,53 +9,48 @@ import { getAllMenusApi } from '#/api';
 const message = useMessage();
 const [Form, formApi] = useVbenForm({
   commonConfig: {
-    // 所有表单项
+    // Common component props for all form items
     componentProps: {
       class: 'w-full',
     },
   },
   layout: 'horizontal',
-  // 大屏一行显示3个，中屏一行显示2个，小屏一行显示1个
+  // On large screens, 3 items per row; on medium screens, 2; on small screens, 1
   wrapperClass: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
   handleSubmit: (values) => {
-    message.success(`表单数据：${JSON.stringify(values)}`);
+    message.success(`Form data: ${JSON.stringify(values)}`);
   },
   schema: [
     {
-      // 组件需要在 #/adapter.ts内注册，并加上类型
+      // The component needs to be registered in #/adapter.ts with its type
       component: 'ApiSelect',
-      // 对应组件的参数
+      // Component-specific props
       componentProps: {
-        // 菜单接口转options格式
+        // Transform menu API data to options format
         afterFetch: (data: { name: string; path: string }[]) => {
           return data.map((item: any) => ({
             label: item.name,
             value: item.path,
           }));
         },
-        // 菜单接口
+        // Menu API
         api: getAllMenusApi,
       },
-      // 字段名
+      // Field name
       fieldName: 'api',
-      // 界面显示的label
+      // Label displayed in the form
       label: 'ApiSelect',
       rules: 'required',
     },
     {
       component: 'ApiTreeSelect',
-      // 对应组件的参数
       componentProps: {
-        // 菜单接口
         api: getAllMenusApi,
         childrenField: 'children',
-        // 菜单接口转options格式
         labelField: 'name',
         valueField: 'path',
       },
-      // 字段名
       fieldName: 'apiTree',
-      // 界面显示的label
       label: 'ApiTreeSelect',
       rules: 'required',
     },
@@ -92,13 +87,13 @@ const [Form, formApi] = useVbenForm({
       label: 'RadioButton',
       componentProps: {
         isButton: true,
-        class: 'flex flex-wrap', // 如果选项过多，可以添加class来自动折叠
+        class: 'flex flex-wrap', // Use class to wrap if there are many options
         options: [
-          { value: 'A', label: '选项A' },
-          { value: 'B', label: '选项B' },
-          { value: 'C', label: '选项C' },
-          { value: 'D', label: '选项D' },
-          { value: 'E', label: '选项E' },
+          { value: 'A', label: 'Option A' },
+          { value: 'B', label: 'Option B' },
+          { value: 'C', label: 'Option C' },
+          { value: 'D', label: 'Option D' },
+          { value: 'E', label: 'Option E' },
         ],
       },
       rules: 'selectRequired',
@@ -109,9 +104,9 @@ const [Form, formApi] = useVbenForm({
       label: 'Checkbox',
       componentProps: {
         options: [
-          { value: 'A', label: '选项A' },
-          { value: 'B', label: '选项B' },
-          { value: 'C', label: '选项C' },
+          { value: 'A', label: 'Option A' },
+          { value: 'B', label: 'Option B' },
+          { value: 'C', label: 'Option C' },
         ],
       },
       rules: 'selectRequired',
@@ -146,12 +141,11 @@ function setFormValues() {
 </script>
 <template>
   <Page
-    description="表单适配器重新包装了CheckboxGroup和RadioGroup，可以通过options属性传递选项数据（选项数据将作为子组件的属性）"
-    title="表单演示"
-  >
-    <NCard title="基础表单">
+    description="The form adapter re-wraps CheckboxGroup and RadioGroup, allowing options data to be passed via the options property (options data will be treated as child component props)."
+    title="Form Demo">
+    <NCard title="Basic Form">
       <template #header-extra>
-        <NButton type="primary" @click="setFormValues">设置表单值</NButton>
+        <NButton type="primary" @click="setFormValues">Set Form Values</NButton>
       </template>
       <Form />
     </NCard>

@@ -1,6 +1,8 @@
 /**
- * 通用组件共同的使用的基础组件，原先放在 adapter/form 内部，限制了使用范围，这里提取出来，方便其他地方使用
- * 可用于 vben-form、vben-modal、vben-drawer 等组件使用,
+ * Common base components used in general-purpose components.
+ * Previously placed inside adapter/form, which limited its usage scope.
+ * Here, it's extracted out for easier use elsewhere.
+ * Can be used for components like vben-form, vben-modal, vben-drawer, etc.
  */
 
 import type { Component } from 'vue';
@@ -70,6 +72,7 @@ const NUpload = defineAsyncComponent(() =>
   import('naive-ui/es/upload').then((res) => res.NUpload),
 );
 
+// Wraps a component with a default placeholder for input/select types
 const withDefaultPlaceholder = <T extends Component>(
   component: T,
   type: 'input' | 'select',
@@ -83,7 +86,7 @@ const withDefaultPlaceholder = <T extends Component>(
         props?.placeholder ||
         attrs?.placeholder ||
         $t(`ui.placeholder.${type}`);
-      // 透传组件暴露的方法
+      // Pass through component's exposed methods
       const innerRef = ref();
       const publicApi: Recordable<any> = {};
       expose(publicApi);
@@ -105,7 +108,8 @@ const withDefaultPlaceholder = <T extends Component>(
   });
 };
 
-// 这里需要自行根据业务组件库进行适配，需要用到的组件都需要在这里类型说明
+// Here, you need to adapt based on your own component library.
+// List the components you want to support.
 export type ComponentType =
   | 'ApiSelect'
   | 'ApiTreeSelect'
@@ -125,9 +129,10 @@ export type ComponentType =
   | 'Upload'
   | BaseFormComponentType;
 
+// Initializes and registers all the components into the global shared state
 async function initComponentAdapter() {
   const components: Partial<Record<ComponentType, Component>> = {
-    // 如果你的组件体积比较大，可以使用异步加载
+    // If your component is large, you can use async loading
     // Button: () =>
     // import('xxx').then((res) => res.Button),
 
@@ -176,11 +181,11 @@ async function initComponentAdapter() {
       );
     },
     DatePicker: NDatePicker,
-    // 自定义默认按钮
+    // Custom default button
     DefaultButton: (props, { attrs, slots }) => {
       return h(NButton, { ...props, attrs, type: 'default' }, slots);
     },
-    // 自定义主要按钮
+    // Custom primary button
     PrimaryButton: (props, { attrs, slots }) => {
       return h(NButton, { ...props, attrs, type: 'primary' }, slots);
     },
@@ -221,12 +226,12 @@ async function initComponentAdapter() {
     Upload: NUpload,
   };
 
-  // 将组件注册到全局共享状态中
+  // Register the components into the global shared state
   globalShareState.setComponents(components);
 
-  // 定义全局共享状态中的消息提示
+  // Define global message prompts in the shared state
   globalShareState.defineMessage({
-    // 复制成功消息提示
+    // Message prompt for successful copy
     copyPreferencesSuccess: (title, content) => {
       message.success(content || title, {
         duration: 0,

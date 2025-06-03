@@ -1,5 +1,5 @@
 /**
- * 该文件可自行根据业务逻辑进行调整
+ * This file can be adjusted according to your business logic
  */
 import type { RequestClientOptions } from '@vben/request';
 
@@ -27,10 +27,10 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
   });
 
   /**
-   * 重新认证逻辑
+   * Re-authentication logic
    */
   async function doReAuthenticate() {
-    console.warn('Access token or refresh token is invalid or expired. ');
+    console.warn('Access token or refresh token is invalid or expired.');
     const accessStore = useAccessStore();
     const authStore = useAuthStore();
     accessStore.setAccessToken(null);
@@ -45,7 +45,7 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
   }
 
   /**
-   * 刷新token逻辑
+   * Token refresh logic
    */
   async function doRefreshToken() {
     const accessStore = useAccessStore();
@@ -59,7 +59,7 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
     return token ? `Bearer ${token}` : null;
   }
 
-  // 请求头处理
+  // Handle request headers
   client.addRequestInterceptor({
     fulfilled: async (config) => {
       const accessStore = useAccessStore();
@@ -70,7 +70,7 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
     },
   });
 
-  // 处理返回的响应数据格式
+  // Handle the returned response data format
   client.addResponseInterceptor(
     defaultResponseInterceptor({
       codeField: 'code',
@@ -79,7 +79,7 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
     }),
   );
 
-  // token过期的处理
+  // Handle token expiration
   client.addResponseInterceptor(
     authenticateResponseInterceptor({
       client,
@@ -90,14 +90,16 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
     }),
   );
 
-  // 通用的错误处理,如果没有进入上面的错误处理逻辑，就会进入这里
+  // General error handling: if the previous error handlers didn’t catch it, it’ll end up here
   client.addResponseInterceptor(
     errorMessageResponseInterceptor((msg: string, error) => {
-      // 这里可以根据业务进行定制,你可以拿到 error 内的信息进行定制化处理，根据不同的 code 做不同的提示，而不是直接使用 message.error 提示 msg
-      // 当前mock接口返回的错误字段是 error 或者 message
+      // You can customize this based on your business requirements.
+      // For example, you can access error details in `error` to handle different codes differently,
+      // instead of directly using `message.error` with `msg`.
+      // The current mock API returns error fields as `error` or `message`.
       const responseData = error?.response?.data ?? {};
       const errorMessage = responseData?.error ?? responseData?.message ?? '';
-      // 如果没有错误信息，则会根据状态码进行提示
+      // If no error message is provided, fall back to a generic message based on the status code.
       message.error(errorMessage || msg);
     }),
   );

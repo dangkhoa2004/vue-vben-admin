@@ -11,7 +11,7 @@ import { $t } from '@vben/locales';
 async function initSetupVbenForm() {
   setupVbenForm<ComponentType>({
     config: {
-      // naive-ui组件的空值为null,不能是undefined，否则重置表单时不生效
+      // The empty value for naive-ui components is null, not undefined; otherwise, resetting the form will not work properly
       emptyStateValue: null,
       baseModelPropName: 'value',
       modelPropNameMap: {

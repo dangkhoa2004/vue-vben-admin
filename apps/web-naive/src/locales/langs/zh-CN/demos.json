@@ -1,14 +1,14 @@
 {
-  "title": "演示",
+  "title": "Demo",
   "naive": "Naive UI",
   "table": "Table",
-  "form": "表单",
+  "form": "Form",
   "vben": {
-    "title": "项目",
-    "about": "关于",
-    "document": "文档",
-    "antdv": "Ant Design Vue 版本",
-    "naive-ui": "Naive UI 版本",
-    "element-plus": "Element Plus 版本"
+    "title": "Project",
+    "about": "About",
+    "document": "Documentation",
+    "antdv": "Ant Design Vue Version",
+    "naive-ui": "Naive UI Version",
+    "element-plus": "Element Plus Version"
   }
 }

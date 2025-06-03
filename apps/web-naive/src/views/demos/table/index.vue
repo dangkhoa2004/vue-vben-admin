@@ -28,11 +28,11 @@ const data = [
 
 <template>
   <Page
-    description="表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。"
-    title="NDataTable"
-  >
+    description="The form page is used to collect or validate information from the user. Basic forms are commonly used when there are fewer data items to handle."
+    title="NDataTable">
     <NDataTable :columns="columns" :data="data" />
   </Page>
 </template>
+
 
 <style scoped></style>
