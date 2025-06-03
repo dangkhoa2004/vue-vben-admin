@@ -1,0 +1,104 @@
+{
+  "formRules": {
+    "required": "Vui lòng nhập {0}",
+    "selectRequired": "Vui lòng chọn {0}",
+    "minLength": "{0} phải có ít nhất {1} ký tự",
+    "maxLength": "{0} có thể có tối đa {1} ký tự",
+    "length": "{0} phải dài {1} ký tự",
+    "alreadyExists": "{0} `{1}` đã tồn tại",
+    "startWith": "{0} phải bắt đầu với `{1}`",
+    "invalidURL": "Vui lòng nhập một URL hợp lệ"
+  },
+  "actionTitle": {
+    "edit": "Chỉnh sửa {0}",
+    "create": "Tạo {0}",
+    "delete": "Xóa {0}",
+    "view": "Xem {0}"
+  },
+  "actionMessage": {
+    "deleteConfirm": "Bạn có chắc muốn xóa {0} không?",
+    "deleting": "Đang xóa {0} ...",
+    "deleteSuccess": "{0} đã được xóa thành công",
+    "operationSuccess": "Thao tác thành công",
+    "operationFailed": "Thao tác thất bại"
+  },
+  "placeholder": {
+    "input": "Vui lòng nhập",
+    "select": "Vui lòng chọn"
+  },
+  "captcha": {
+    "title": "Vui lòng hoàn thành xác minh bảo mật",
+    "sliderSuccessText": "Thành công",
+    "sliderDefaultText": "Trượt và kéo",
+    "alt": "Hỗ trợ giá trị src của thẻ img",
+    "sliderRotateDefaultTip": "Nhấn vào hình để làm mới",
+    "sliderRotateFailTip": "Xác minh thất bại",
+    "sliderRotateSuccessTip": "Xác minh thành công, thời gian {0} giây",
+    "refreshAriaLabel": "Làm mới captcha",
+    "confirmAriaLabel": "Xác nhận lựa chọn",
+    "confirm": "Xác nhận",
+    "pointAriaLabel": "Nhấn điểm",
+    "clickInOrder": "Vui lòng nhấn theo thứ tự"
+  },
+  "iconPicker": {
+    "placeholder": "Chọn một biểu tượng",
+    "search": "Tìm kiếm biểu tượng..."
+  },
+  "jsonViewer": {
+    "copy": "Sao chép",
+    "copied": "Đã sao chép"
+  },
+  "fallback": {
+    "pageNotFound": "Ôi! Không tìm thấy trang",
+    "pageNotFoundDesc": "Rất tiếc, chúng tôi không thể tìm thấy trang bạn đang tìm.",
+    "forbidden": "Ôi! Truy cập bị từ chối",
+    "forbiddenDesc": "Rất tiếc, bạn không có quyền truy cập trang này.",
+    "internalError": "Ôi! Đã xảy ra lỗi",
+    "internalErrorDesc": "Rất tiếc, máy chủ đã gặp lỗi.",
+    "offline": "Trang ngoại tuyến",
+    "offlineError": "Ôi! Lỗi mạng",
+    "offlineErrorDesc": "Rất tiếc, không thể kết nối Internet. Hãy kiểm tra kết nối của bạn.",
+    "comingSoon": "Sắp ra mắt",
+    "http": {
+      "requestTimeout": "Yêu cầu đã hết thời gian. Vui lòng thử lại sau.",
+      "networkError": "Đã xảy ra lỗi mạng. Vui lòng kiểm tra kết nối Internet và thử lại.",
+      "badRequest": "Yêu cầu không hợp lệ. Vui lòng kiểm tra lại dữ liệu và thử lại.",
+      "unauthorized": "Chưa được xác thực. Vui lòng đăng nhập để tiếp tục.",
+      "forbidden": "Bị cấm. Bạn không có quyền truy cập tài nguyên này.",
+      "notFound": "Không tìm thấy. Tài nguyên yêu cầu không tồn tại.",
+      "internalServerError": "Lỗi máy chủ. Đã xảy ra sự cố, vui lòng thử lại sau."
+    }
+  },
+  "widgets": {
+    "document": "Tài liệu",
+    "qa": "Hỏi & Đáp",
+    "setting": "Cài đặt",
+    "logoutTip": "Bạn có muốn đăng xuất không?",
+    "viewAll": "Xem tất cả tin nhắn",
+    "notifications": "Thông báo",
+    "markAllAsRead": "Đánh dấu tất cả đã đọc",
+    "clearNotifications": "Xóa tất cả",
+    "checkUpdatesTitle": "Phiên bản mới có sẵn",
+    "checkUpdatesDescription": "Nhấn để làm mới và nhận phiên bản mới nhất",
+    "search": {
+      "title": "Tìm kiếm",
+      "searchNavigate": "Tìm kiếm điều hướng",
+      "select": "Chọn",
+      "navigate": "Điều hướng",
+      "close": "Đóng",
+      "noResults": "Không tìm thấy kết quả",
+      "noRecent": "Không có lịch sử tìm kiếm",
+      "recent": "Lịch sử tìm kiếm"
+    },
+    "lockScreen": {
+      "title": "Khóa màn hình",
+      "screenButton": "Đang khóa",
+      "password": "Mật khẩu",
+      "placeholder": "Vui lòng nhập mật khẩu",
+      "unlock": "Nhấn để mở khóa",
+      "errorPasswordTip": "Mật khẩu không đúng, vui lòng thử lại",
+      "backToLogin": "Quay lại đăng nhập",
+      "entry": "Vào hệ thống"
+    }
+  }
+}

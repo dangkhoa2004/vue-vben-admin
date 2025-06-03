@@ -16,7 +16,7 @@ import type {
   ThemeModeType,
 } from '@vben-core/typings';
 
-type SupportedLanguagesType = 'en-US' | 'zh-CN';
+type SupportedLanguagesType = 'en-US' | 'zh-CN' | 'vi-VN';
 
 interface AppPreferences {
   /** Access mode */

@@ -1,7 +1,5 @@
 import type { Locale } from 'ant-design-vue/es/locale';
-
 import type { App } from 'vue';
-
 import type { LocaleSetupOptions, SupportedLanguagesType } from '@vben/locales';
 
 import { ref } from 'vue';
@@ -15,6 +13,7 @@ import { preferences } from '@vben/preferences';
 
 import antdEnLocale from 'ant-design-vue/es/locale/en_US';
 import antdDefaultLocale from 'ant-design-vue/es/locale/zh_CN';
+import antdViLocale from 'ant-design-vue/es/locale/vi_VN'; // Thêm dòng này
 import dayjs from 'dayjs';
 
 const antdLocale = ref<Locale>(antdDefaultLocale);
@@ -25,10 +24,9 @@ const localesMap = loadLocalesMapFromDir(
   /\.\/langs\/([^/]+)\/(.*)\.json$/,
   modules,
 );
+
 /**
- * 加载应用特有的语言包
- * 这里也可以改造为从服务端获取翻译数据
- * @param lang
+ * Load app-specific language pack
  */
 async function loadMessages(lang: SupportedLanguagesType) {
   const [appLocaleMessages] = await Promise.all([
@@ -39,16 +37,14 @@ async function loadMessages(lang: SupportedLanguagesType) {
 }
 
 /**
- * 加载第三方组件库的语言包
- * @param lang
+ * Load third-party component library language packs
  */
 async function loadThirdPartyMessage(lang: SupportedLanguagesType) {
   await Promise.all([loadAntdLocale(lang), loadDayjsLocale(lang)]);
 }
 
 /**
- * 加载dayjs的语言包
- * @param lang
+ * Load Day.js language pack
  */
 async function loadDayjsLocale(lang: SupportedLanguagesType) {
   let locale;
@@ -61,7 +57,10 @@ async function loadDayjsLocale(lang: SupportedLanguagesType) {
       locale = await import('dayjs/locale/zh-cn');
       break;
     }
-    // 默认使用英语
+    case 'vi-VN': {
+      locale = await import('dayjs/locale/vi');
+      break;
+    }
     default: {
       locale = await import('dayjs/locale/en');
     }
@@ -74,8 +73,7 @@ async function loadDayjsLocale(lang: SupportedLanguagesType) {
 }
 
 /**
- * 加载antd的语言包
- * @param lang
+ * Load Ant Design Vue language pack
  */
 async function loadAntdLocale(lang: SupportedLanguagesType) {
   switch (lang) {
@@ -85,6 +83,10 @@ async function loadAntdLocale(lang: SupportedLanguagesType) {
     }
     case 'zh-CN': {
       antdLocale.value = antdDefaultLocale;
+      break;
+    }
+    case 'vi-VN': { // Thêm dòng này
+      antdLocale.value = antdViLocale;
       break;
     }
   }

@@ -1,7 +1,5 @@
 import type { Language } from 'element-plus/es/locale';
-
 import type { App } from 'vue';
-
 import type { LocaleSetupOptions, SupportedLanguagesType } from '@vben/locales';
 
 import { ref } from 'vue';
@@ -16,6 +14,7 @@ import { preferences } from '@vben/preferences';
 import dayjs from 'dayjs';
 import enLocale from 'element-plus/es/locale/lang/en';
 import defaultLocale from 'element-plus/es/locale/lang/zh-cn';
+import viLocale from 'element-plus/es/locale/lang/vi'; // 👈 Thêm dòng này
 
 const elementLocale = ref<Language>(defaultLocale);
 
@@ -25,10 +24,9 @@ const localesMap = loadLocalesMapFromDir(
   /\.\/langs\/([^/]+)\/(.*)\.json$/,
   modules,
 );
+
 /**
- * 加载应用特有的语言包
- * 这里也可以改造为从服务端获取翻译数据
- * @param lang
+ * Load app-specific language pack
  */
 async function loadMessages(lang: SupportedLanguagesType) {
   const [appLocaleMessages] = await Promise.all([
@@ -39,16 +37,14 @@ async function loadMessages(lang: SupportedLanguagesType) {
 }
 
 /**
- * 加载第三方组件库的语言包
- * @param lang
+ * Load third-party component library language packs
  */
 async function loadThirdPartyMessage(lang: SupportedLanguagesType) {
   await Promise.all([loadElementLocale(lang), loadDayjsLocale(lang)]);
 }
 
 /**
- * 加载dayjs的语言包
- * @param lang
+ * Load Day.js locale
  */
 async function loadDayjsLocale(lang: SupportedLanguagesType) {
   let locale;
@@ -61,7 +57,10 @@ async function loadDayjsLocale(lang: SupportedLanguagesType) {
       locale = await import('dayjs/locale/zh-cn');
       break;
     }
-    // 默认使用英语
+    case 'vi-VN': { // 👈 Thêm dòng này
+      locale = await import('dayjs/locale/vi');
+      break;
+    }
     default: {
       locale = await import('dayjs/locale/en');
     }
@@ -74,8 +73,7 @@ async function loadDayjsLocale(lang: SupportedLanguagesType) {
 }
 
 /**
- * 加载element-plus的语言包
- * @param lang
+ * Load Element Plus locale
  */
 async function loadElementLocale(lang: SupportedLanguagesType) {
   switch (lang) {
@@ -85,6 +83,10 @@ async function loadElementLocale(lang: SupportedLanguagesType) {
     }
     case 'zh-CN': {
       elementLocale.value = defaultLocale;
+      break;
+    }
+    case 'vi-VN': { // 👈 Thêm dòng này
+      elementLocale.value = viLocale;
       break;
     }
   }
